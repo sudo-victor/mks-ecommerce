@@ -34,7 +34,7 @@ const SidebarCart = () => {
       <Cards>
         {
           products.map(product => (
-            <ProductCart product={product} />
+            <ProductCart key={product.id} product={product} />
           ))
         }
 
