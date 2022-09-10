@@ -48,6 +48,8 @@ const ProductCard = ({
           height={120}
           layout='responsive'
           objectFit='contain'
+          placeholder='blur'
+          blurDataURL={product.photo}
         />
       </ImageWrapper>
 
