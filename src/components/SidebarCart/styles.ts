@@ -81,7 +81,6 @@ export const Cards = styled.div`
 
   @media (max-width: 768px) {
     padding: 10px 47px;
-    height: 80%;
   }
 `
 
