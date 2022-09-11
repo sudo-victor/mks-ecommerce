@@ -26,7 +26,7 @@ const ProductCart = ({
 
   useEffect(() => {
     setAmount(products.find(p => p.id === product.id)?.amount || 1)
-  }, [])
+  }, [products])
 
   const handleIncrementAmount = () => {
     setAmount(state => state + 1)
