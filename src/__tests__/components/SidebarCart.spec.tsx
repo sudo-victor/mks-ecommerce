@@ -22,21 +22,10 @@ jest.mock('../../hooks/store', () => {
   }
 })
 
-describe('SidebarCart', () => {
+describe('SidebarCart component', () => {
   it('should be able to calculate the subtotal correctly', () => {
     const { getByTestId } = render(<SidebarCart />)
     const subtotal = getByTestId('subtotal')
-
-    expect(subtotal).toHaveTextContent('R$ 4.400,00')
-  })
-
-  it('should be able to remove a product', async () => {
-    const { getAllByTestId, getByTestId } = render(<SidebarCart />)
-    const subtotal = getByTestId('subtotal')
-    // await waitFor(() => getAllByTestId('add-product-button'), {
-    //   timeout: 200,
-    // });
-    const [removeCartProduct] = getAllByTestId('remove-cart-product')
 
     expect(subtotal).toHaveTextContent('R$ 4.400,00')
   })

@@ -1,5 +1,5 @@
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image';
-import React, { useState } from 'react'
 
 import { numberToPrice } from '../../helpers/priceFormat';
 import { useAppDispatch, useAppSelector } from '../../hooks/store';
@@ -22,29 +22,40 @@ const ProductCart = ({
 }: Props) => {
   const products = useAppSelector(state => state.products)
   const dispatch = useAppDispatch()
+  const [ amount, setAmount] = useState(1)
 
-  const amount = products.find(p => p.id === product.id)?.amount
+  useEffect(() => {
+    setAmount(products.find(p => p.id === product.id)?.amount || 1)
+  }, [])
 
   const handleIncrementAmount = () => {
+    setAmount(state => state + 1)
     dispatch(incrementProductAmount({ id: product.id }))
   }
 
   const handleDecrementAmount = () => {
     if (amount === 1) return
+    setAmount(state => state - 1)
     dispatch(decrementProductAmount({ id: product.id }))
   }
 
   return (
     <Container>
       <ImageWrapper>
-        <Image
-          src={product.photo}
-          alt={product.name}
-          width={60}
-          height={60}
-          layout='intrinsic'
-          objectFit='contain'
-        />
+        {
+          product.photo && (
+            <Image
+              src={product.photo}
+              alt={product.name}
+              width={60}
+              height={60}
+              layout='intrinsic'
+              objectFit='contain'
+              placeholder='blur'
+              blurDataURL={product.photo}
+            />
+          )
+        }
       </ImageWrapper>
 
       <h3>{product.name}</h3>
@@ -57,11 +68,15 @@ const ProductCart = ({
               className={`${amount === 1 ? 'is-disabled' : ''}`}
               onClick={handleDecrementAmount}
               disabled={amount === 1}
+              data-testid="decrement-product"
             >
               -
             </button>
-            <p>{amount}</p>
-            <button onClick={handleIncrementAmount}>+</button>
+            <p data-testid="product-amount">{amount}</p>
+            <button
+              onClick={handleIncrementAmount}
+              data-testid="increment-product"
+            >+</button>
           </Controls>
         </ControlsWrapper>
 

@@ -15,7 +15,7 @@ type DataProps = {
 }
 
 type Props = {
-  data?: DataProps;
+  data: DataProps;
 }
 
 const Home: NextPage<Props> = ({ data }) => {

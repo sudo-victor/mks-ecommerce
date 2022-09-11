@@ -17,6 +17,7 @@ export const Container = styled.div`
   & > h3 {
     width: 100%;
     max-width: 100px;
+    margin-right: 5px;
 
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;

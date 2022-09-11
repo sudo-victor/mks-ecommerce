@@ -22,7 +22,7 @@ const Header = () => {
     <Container>
       <Wrapper>
         <Logo>
-          <h1>MKS</h1>
+          <h1 data-testid="title">MKS</h1>
           <p>Sistemas</p>
         </Logo>
 

@@ -41,16 +41,20 @@ const ProductCard = ({
   return (
     <Container>
       <ImageWrapper>
-        <Image
-          src={product.photo}
-          alt={product.name}
-          width={218}
-          height={120}
-          layout='responsive'
-          objectFit='contain'
-          placeholder='blur'
-          blurDataURL={product.photo}
-        />
+        {
+          product.photo && (
+            <Image
+              src={product.photo}
+              alt={product.name}
+              width={218}
+              height={120}
+              layout='responsive'
+              objectFit='contain'
+              placeholder='blur'
+              blurDataURL={product.photo}
+            />
+          )
+        }
       </ImageWrapper>
 
       <Info>
